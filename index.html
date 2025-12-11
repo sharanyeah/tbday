@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Trisha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Lato', -apple-system, sans-serif;
+      background: #FAF0F3;
+      color: #5D2E46;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(213, 145, 164, 0.03) 2px, rgba(213, 145, 164, 0.03) 4px);
+    }
+    
+    header {
+      text-align: center;
+      padding: 60px 40px 40px;
+      border-bottom: 1px solid rgba(213, 145, 164, 0.2);
+    }
+    header h1 { 
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; 
+      font-weight: 400; 
+      letter-spacing: 3px;
+      color: #8B4D6B;
+      text-transform: uppercase;
+    }
+    
+    .intro {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+      text-align: center;
+    }
+    .intro h2 { 
+      font-family: 'Playfair Display', serif;
+      font-size: 48px; 
+      font-weight: 700; 
+      margin-bottom: 32px;
+      color: #5D2E46;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+    .intro p { 
+      font-size: 16px; 
+      line-height: 1.8; 
+      color: #7D5566;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+    .intro .subtitle {
+      font-size: 14px;
+      margin-top: 40px;
+      font-weight: 400;
+      color: #A67B8C;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+    
+    .ornament {
+      text-align: center;
+      margin: 70px auto;
+      color: #D591A4;
+      font-size: 24px;
+      letter-spacing: 8px;
+      opacity: 0.4;
+    }
+    
+    .container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 40px 40px 80px;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 600;
+      text-align: center;
+      color: #5D2E46;
+      margin-bottom: 60px;
+      letter-spacing: 0.5px;
+    }
+    
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .container { padding: 30px 20px 60px; }
+      .intro { padding: 60px 24px 40px; }
+      .intro h2 { font-size: 36px; }
+      header h1 { font-size: 14px; letter-spacing: 2px; }
+    }
+    
+    .envelope-container {
+      aspect-ratio: 1.6;
+      cursor: pointer;
+      position: relative;
+      perspective: 1000px;
+      transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .envelope-container:hover { 
+      transform: translateY(-8px); 
+    }
+    
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    
+    .envelope-body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #F5D4DC 0%, #ECC4CF 100%);
+      border: 2px solid #D591A4;
+      border-radius: 4px;
+      box-shadow: 
+        0 2px 8px rgba(93, 46, 70, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    
+    .envelope-lines {
+      position: absolute;
+      top: 45%;
+      left: 15%;
+      right: 15%;
+    }
+    .envelope-line {
+      height: 1px;
+      background: rgba(141, 77, 107, 0.2);
+      margin-bottom: 10px;
+    }
+    .envelope-line:nth-child(2) { width: 70%; }
+    .envelope-line:nth-child(3) { width: 85%; }
+    
+    .stamp {
+      position: absolute;
+      top: 12%;
+      right: 10%;
+      width: 50px;
+      height: 40px;
+      border: 2px dashed rgba(141, 77, 107, 0.3);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: rgba(141, 77, 107, 0.4);
+      font-weight: 600;
+    }
+    
+    .wax-seal {
+      position: absolute;
+      bottom: 20%;
+      right: 15%;
+      width: 45px;
+      height: 45px;
+      background: radial-gradient(circle, #B8677D 0%, #8B4D6B 100%);
+      border-radius: 50%;
+      box-shadow: 
+        0 3px 8px rgba(139, 77, 107, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wax-seal::after {
+      content: '❤';
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(135deg, #E8B5C5 0%, #D591A4 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-left: 2px solid #D591A4;
+      border-right: 2px solid #D591A4;
+      border-top: 2px solid #D591A4;
+      transform-origin: top center;
+      transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(93, 46, 70, 0.15);
+    }
+    .envelope-container.opening .envelope-flap {
+      transform: rotateX(180deg);
+    }
+    
+    .letter-peek {
+      position: absolute;
+      top: 8%;
+      left: 10%;
+      right: 10%;
+      height: 75%;
+      background: #FFFBF5;
+      border: 1px solid #E8D5C4;
+      border-radius: 3px;
+      opacity: 0;
+      transform: translateY(0);
+      transition: all 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 16px rgba(93, 46, 70, 0.2);
+    }
+    .envelope-container.opening .letter-peek {
+      opacity: 1;
+      transform: translateY(-40%);
+    }
+    .letter-peek::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(93, 46, 70, 0.1), transparent);
+    }
+    .letter-peek::after {
+      content: '';
+      position: absolute;
+      top: 32%;
+      left: 15%;
+      right: 25%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(93, 46, 70, 0.08), transparent);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(93, 46, 70, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 400ms ease;
+      z-index: 200;
+    }
+    .overlay.active { opacity: 1; pointer-events: all; }
+    
+    .letter-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      background: #FFFBF5;
+      padding: 70px 60px 60px;
+      max-width: 650px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 300;
+      box-shadow: 
+        0 20px 60px rgba(93, 46, 70, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transform: translate(-50%, -50%) scale(0.8);
+      transition: none;
+      border: 2px solid #E8D5C4;
+      border-radius: 2px;
+    }
+    .letter-modal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          transparent,
+          transparent 31px,
+          rgba(213, 145, 164, 0.08) 31px,
+          rgba(213, 145, 164, 0.08) 32px
+        );
+      pointer-events: none;
+    }
+    .letter-modal.active {
+      opacity: 1;
+      pointer-events: all;
+      animation: expandLetter 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    @keyframes expandLetter {
+      0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+    .letter-modal.closing {
+      animation: collapseLetter 400ms ease-out forwards;
+    }
+    @keyframes collapseLetter {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(0.85); opacity: 0; }
+    }
+    body.modal-open { overflow: hidden; }
+    
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid rgba(93, 46, 70, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 250ms ease;
+      z-index: 10;
+    }
+    .close-btn:hover { 
+      background: rgba(213, 145, 164, 0.1);
+      border-color: rgba(93, 46, 70, 0.4);
+      transform: rotate(90deg);
+    }
+    .close-btn::before, .close-btn::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: #8B4D6B;
+      border-radius: 1px;
+    }
+    .close-btn::before { transform: rotate(45deg); }
+    .close-btn::after { transform: rotate(-45deg); }
+    
+    .letter-content {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #5D2E46;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    .letter-content p {
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeInLetter 800ms ease-out forwards;
+    }
+    @keyframes fadeInLetter {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    .reflection {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 0 40px;
+      text-align: center;
+      line-height: 1.9;
+    }
+    .reflection p { 
+      margin-bottom: 24px; 
+      font-size: 16px; 
+      font-weight: 300;
+      color: #7D5566;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 80px 40px 50px;
+      color: #A67B8C;
+      font-size: 14px;
+      font-weight: 300;
+      border-top: 1px solid rgba(213, 145, 164, 0.2);
+      line-height: 1.8;
+    }
+    footer p { margin-bottom: 10px; }
+    footer .signature {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      margin-top: 24px;
+      font-weight: 400;
+      font-style: italic;
+      color: #8B4D6B;
+    }
+    
+    @media (max-width: 768px) {
+      .letter-modal { padding: 60px 40px 50px; }
+      .letter-content { font-size: 15px; line-height: 1.8; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>For Trisha · December 2024</h1>
+  </header>
+  
+  <div class="intro">
+    <h2>Twenty Three Letters</h2>
+    <p>Some people give gifts wrapped in paper and tied with ribbons. I give you words wrapped in envelopes and sealed with intention.</p>
+    <p>Each letter holds something different—a memory, a feeling, a reason you matter.</p>
+    <p class="subtitle">Click each envelope to read what's inside</p>
+  </div>
+  
+  <div class="ornament">✦ ✦ ✦</div>
+  
+  <div class="container">
+    <div class="section-title">Your Letters Await</div>
+    <div class="grid" id="grid"></div>
+  </div>
+  
+  <div class="ornament">✦ ✦ ✦</div>
+  
+  <div class="reflection">
+    <p>Writing these letters felt like capturing fireflies in jars—trying to hold onto fleeting moments of light.</p>
+    <p>Some will make you smile. Some might make you tear up. All of them are true.</p>
+    <p>Happy birthday, Trisha. Thank you for being exactly who you are.</p>
+  </div>
+  
+  <footer>
+    <p>These words are my gift. Your existence is ours.</p>
+    <p>May this year bring you everything you've been waiting for.</p>
+    <p class="signature">With love, always</p>
+  </footer>
+  
+  <div class="overlay" id="overlay"></div>
+  <div class="letter-modal" id="modal">
+    <button class="close-btn" id="closeBtn" aria-label="Close"></button>
+    <div class="letter-content" id="content"></div>
+  </div>
+  
+  <script>
+    const letters = [
+      { paragraphs: ["Letter 1 - Add your text here"] },
+      { paragraphs: ["Letter 2 - Add your text here"] },
+      { paragraphs: ["Letter 3 - Add your text here"] },
+      { paragraphs: ["Letter 4 - Add your text here"] },
+      { paragraphs: ["Letter 5 - Add your text here"] },
+      { paragraphs: ["Letter 6 - Add your text here"] },
+      { paragraphs: ["Letter 7 - Add your text here"] },
+      { paragraphs: ["Letter 8 - Add your text here"] },
+      { paragraphs: ["Letter 9 - Add your text here"] },
+      { paragraphs: ["Letter 10 - Add your text here"] },
+      { paragraphs: ["Letter 11 - Add your text here"] },
+      { paragraphs: ["Letter 12 - Add your text here"] },
+      { paragraphs: ["Letter 13 - Add your text here"] },
+      { paragraphs: ["Letter 14 - Add your text here"] },
+      { paragraphs: ["Letter 15 - Add your text here"] },
+      { paragraphs: ["Letter 16 - Add your text here"] },
+      { paragraphs: ["Letter 17 - Add your text here"] },
+      { paragraphs: ["Letter 18 - Add your text here"] },
+      { paragraphs: ["Letter 19 - Add your text here"] },
+      { paragraphs: ["Letter 20 - Add your text here"] },
+      { paragraphs: ["Letter 21 - Add your text here"] },
+      { paragraphs: ["Letter 22 - Add your text here"] },
+      { paragraphs: ["Letter 23 - Add your text here"] }
+    ];
+    
+    const grid = document.getElementById('grid');
+    const overlay = document.getElementById('overlay');
+    const modal = document.getElementById('modal');
+    const content = document.getElementById('content');
+    const closeBtn = document.getElementById('closeBtn');
+    
+    letters.forEach((letter, index) => {
+      const container = document.createElement('div');
+      container.className = 'envelope-container';
+      
+      container.innerHTML = `
+        <div class="envelope">
+          <div class="envelope-body">
+            <div class="envelope-lines">
+              <div class="envelope-line"></div>
+              <div class="envelope-line"></div>
+              <div class="envelope-line"></div>
+            </div>
+            <div class="stamp">${index + 1}</div>
+            <div class="wax-seal"></div>
+          </div>
+          <div class="envelope-flap"></div>
+          <div class="letter-peek"></div>
+        </div>
+      `;
+      
+      container.addEventListener('click', () => {
+        container.classList.add('opening');
+        setTimeout(() => {
+          openLetter(letter.paragraphs);
+          setTimeout(() => container.classList.remove('opening'), 100);
+        }, 900);
+      });
+      
+      grid.appendChild(container);
+    });
+    
+    function openLetter(paragraphs) {
+      document.body.classList.add('modal-open');
+      overlay.classList.add('active');
+      modal.classList.remove('closing');
+      modal.classList.add('active');
+      content.innerHTML = '';
+      paragraphs.forEach((para, index) => {
+        const p = document.createElement('p');
+        p.textContent = para;
+        p.style.animationDelay = `${index * 150}ms`;
+        content.appendChild(p);
+      });
+    }
+    
+    function closeLetter() {
+      modal.classList.add('closing');
+      modal.classList.remove('active');
+      overlay.classList.remove('active');
+      setTimeout(() => {
+        document.body.classList.remove('modal-open');
+        content.innerHTML = '';
+        modal.classList.remove('closing');
+      }, 400);
+    }
+    
+    overlay.addEventListener('click', closeLetter);
+    closeBtn.addEventListener('click', closeLetter);
+  </script>
+</body>
+</html>
