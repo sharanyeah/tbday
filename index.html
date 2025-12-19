@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Trisha Day</title>
+  <title>Happy Birthday Trisha</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,6 +101,19 @@
       .intro { padding: 60px 24px 40px; }
       .intro h2 { font-size: 36px; }
       header h1 { font-size: 14px; letter-spacing: 2px; }
+      .section-title { font-size: 24px; margin-bottom: 40px; }
+      .ornament { margin: 50px auto; font-size: 20px; }
+      .reflection { padding: 0 24px; margin: 60px auto; }
+      footer { padding: 60px 24px 40px; }
+    }
+    
+    @media (max-width: 480px) {
+      .intro h2 { font-size: 28px; }
+      .intro p { font-size: 15px; }
+      header { padding: 40px 20px 30px; }
+      header h1 { font-size: 12px; letter-spacing: 1.5px; }
+      .grid { gap: 16px; }
+      .stamp { width: 40px; height: 32px; font-size: 18px; }
     }
     
     .envelope-container {
@@ -164,26 +177,7 @@
       font-weight: 600;
     }
     
-    .wax-seal {
-      position: absolute;
-      bottom: 20%;
-      right: 15%;
-      width: 45px;
-      height: 45px;
-      background: radial-gradient(circle, #B8677D 0%, #8B4D6B 100%);
-      border-radius: 50%;
-      box-shadow: 
-        0 3px 8px rgba(139, 77, 107, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .wax-seal::after {
-      content: '❤';
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.6);
-    }
+
     
     .envelope-flap {
       position: absolute;
@@ -410,8 +404,23 @@
     }
     
     @media (max-width: 768px) {
-      .letter-modal { padding: 60px 40px 50px; }
+      .letter-modal { 
+        padding: 60px 40px 50px;
+        width: 95%;
+        max-height: 85vh;
+      }
       .letter-content { font-size: 15px; line-height: 1.8; }
+      .close-btn { width: 36px; height: 36px; top: 15px; right: 15px; }
+      .close-btn::before, .close-btn::after { width: 16px; }
+    }
+    
+    @media (max-width: 480px) {
+      .letter-modal { 
+        padding: 50px 24px 40px;
+        width: 95%;
+      }
+      .letter-content { font-size: 14px; line-height: 1.7; }
+      .letter-content p { margin-bottom: 20px; }
     }
   </style>
 </head>
@@ -439,11 +448,11 @@
   <div class="reflection">
     <p>Writing these letters felt like flipping through old photos—each memory so vivid, so perfectly you.</p>
     <p>Some will make you smile. Some might make you emotional. All of them are true.</p>
-    <p>Happy 22nd birthday, bestiee. Thank you for growing into someone so incredible.</p>
+    <p>Happy 22nd birthday, best friend. Thank you for growing into someone so incredible.</p>
   </div>
   
   <footer>
-    
+    <p>These words are my gift. Your friendship is mine.</p>
     <p>May this year bring you everything you've been dreaming of.</p>
     <p class="signature">With love, always</p>
   </footer>
@@ -520,7 +529,6 @@
               <div class="envelope-line"></div>
             </div>
             <div class="stamp">${index + 1}</div>
-            <div class="wax-seal"></div>
           </div>
           <div class="envelope-flap"></div>
           <div class="letter-peek"></div>
